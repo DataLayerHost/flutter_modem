@@ -1,0 +1,9 @@
+import 'dart:convert';
+import 'dart:typed_data';
+
+import 'package:dart_modem/dart_modem.dart';
+
+void main() {
+  final Int16List pcm = BfskEncoder().encode(utf8.encode('Hello'));
+  print('Encoded ${pcm.length} signed Int16 PCM samples.');
+}

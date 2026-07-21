@@ -1,0 +1,42 @@
+# Dart and pub
+.dart_tool/
+.packages
+pubspec.lock
+pubspec_overrides.yaml
+
+# Generated output
+build/
+coverage/
+doc/api/
+*.dill
+*.js.deps
+*.js.map
+*.wasm
+*.wasm.map
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Editors and IDEs
+.idea/
+*.iml
+.vscode/
+*.code-workspace
+*.swp
+*.swo
+*~
+
+# Local environment and logs
+.env
+.env.*
+!.env.example
+*.log
+
+# Test and coverage tooling
+.test_coverage.dart
+lcov.info
