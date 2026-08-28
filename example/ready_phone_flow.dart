@@ -1,9 +1,9 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 
-final DartModem modem = DartModem();
+final FlutterModem modem = FlutterModem();
 final Int16List preparedTransactionPcm = modem.encode(
   utf8.encode('Prepared transaction'),
 );

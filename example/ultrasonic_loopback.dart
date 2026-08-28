@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 
 void main() {
-  final DartModem modem = DartModem(
+  final FlutterModem modem = FlutterModem(
     modulation: const Bfsk.ultrasonic(),
   );
   final List<int> sent = utf8.encode('Near-ultrasonic Hello');

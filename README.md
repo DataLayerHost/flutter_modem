@@ -1,6 +1,6 @@
-# DART MODEM
+# Flutter Modem
 
-`dart_modem` is a pure Dart acoustic modem. It turns arbitrary bytes into signed
+`flutter_modem` is a pure Dart acoustic modem. It turns arbitrary bytes into signed
 16-bit PCM audio and incrementally reconstructs validated packets from PCM. The
 core has no Flutter, native-code, audio-device, or runtime-specific dependency,
 so it can be used on the Dart VM, servers, Flutter, and Dart-to-Wasm targets.
@@ -10,9 +10,9 @@ so it can be used on the Dart VM, servers, Flutter, and Dart-to-Wasm targets.
 ```dart
 import 'dart:convert';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 
-final modem = DartModem(modulation: const Bfsk());
+final modem = FlutterModem(modulation: const Bfsk());
 final pcm = modem.encode(utf8.encode('Hello'));
 
 final decoder = modem.createStreamingDecoder();
@@ -27,13 +27,13 @@ to the host application, which keeps the modem platform-independent.
 
 ## Application protocol
 
-`DartModem` uses Voice Transaction Protocol version 1 by default. Each input is
+`FlutterModem` uses Voice Transaction Protocol version 1 by default. Each input is
 treated as an already-signed transaction, wrapped in a SHA-256/CRC-protected
 envelope, split into Voice TX DATA packets, and reassembled by the matching
 decoder. Configure the chain identifiers for production use:
 
 ```dart
-final modem = DartModem(
+final modem = FlutterModem(
   protocol: const VoiceTxModemProtocol(
     blockchainId: 1,
     networkId: 1,
@@ -44,15 +44,15 @@ final modem = DartModem(
 The default identifiers are zero when the application does not supply them.
 Empty payloads are invalid under Voice TX. The complete Voice TX packet,
 envelope, assembly, and sender/receiver session APIs are exported directly by
-`dart_modem`.
+`flutter_modem`.
 
 To use only the modem's basic `DMOD` transport framing, disable the application
 protocol explicitly:
 
 ```dart
-final rawModem = DartModem(protocol: null);
+final rawModem = FlutterModem(protocol: null);
 // Equivalent when a non-null ModemProtocol value is needed:
-final identityModem = DartModem(protocol: const NoModemProtocol());
+final identityModem = FlutterModem(protocol: const NoModemProtocol());
 ```
 
 Another protocol can replace Voice TX by implementing `ModemProtocol` and its
@@ -88,7 +88,7 @@ For hardware with a usable high-frequency audio path, select the built-in
 near-ultrasonic preset:
 
 ```dart
-final modem = DartModem(
+final modem = FlutterModem(
   modulation: const Bfsk.ultrasonic(),
 );
 
@@ -115,7 +115,7 @@ For noisy, filtered, or codec-damaged calls where throughput is less important,
 use the 100-baud poor-quality profile:
 
 ```dart
-final modem = DartModem(
+final modem = FlutterModem(
   modulation: const Bfsk.poorQuality(),
 );
 ```
@@ -128,7 +128,7 @@ It uses 8 kHz PCM with 1200/2200 Hz tones and 80 samples per bit. The older
 The `fast` preset is an alternative 1200-baud audible channel:
 
 ```dart
-final modem = DartModem(
+final modem = FlutterModem(
   modulation: const Bfsk.fast(),
 );
 
@@ -199,13 +199,13 @@ add gain control, filtering, echo, clock drift, clipping, and noise. Resample
 captured audio to the configured rate and supply mono signed Int16 PCM. Test the
 chosen frequencies and baud rate against the actual channel before deployment.
 
-The waveform uses V.23-compatible frequencies and bitrate, but dart_modem's
+The waveform uses V.23-compatible frequencies and bitrate, but flutter_modem's
 packet framing is its own protocol; it does not claim byte-level interoperability
 with legacy V.23 terminals. Speech codecs, echo cancellation, automatic gain
 control, and noise suppression can still damage modem audio. An uncompressed
 G.711 path is preferable where the call stack exposes that choice.
 
-`dart_modem` only generates and analyzes waveforms. A Flutter application can
+`flutter_modem` only generates and analyzes waveforms. A Flutter application can
 connect it to any suitable audio capture/playback package without coupling that
 package to the modem core.
 
@@ -239,7 +239,7 @@ listening, and permits transmission after a decoded guard delay.
 Receiver answers
 → receiver repeats READY
 → phone microphone captures READY
-→ dart_modem detects READY
+→ flutter_modem detects READY
 → app waits guard delay
 → app plays transaction audio
 → receiver stops READY transmission when transaction preamble is detected
@@ -275,7 +275,7 @@ behavior implemented in this release.
 ### Receiver/server generation
 
 ```dart
-final modem = DartModem();
+final modem = FlutterModem();
 final ready = ReadySignal(
   sessionId: secureSessionId,
   guardDelay: const Duration(milliseconds: 500),

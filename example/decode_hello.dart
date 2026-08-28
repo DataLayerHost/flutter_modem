@@ -1,7 +1,7 @@
 import 'dart:convert';
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 
 Future<void> main() async {
   final Int16List pcm = BfskEncoder().encode(utf8.encode('Hello'));

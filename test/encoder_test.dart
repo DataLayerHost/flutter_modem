@@ -1,6 +1,6 @@
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 import 'package:test/test.dart';
 
 void main() {

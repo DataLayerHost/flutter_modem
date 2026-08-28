@@ -35,8 +35,8 @@ final class ProtocolModemDecoder implements ModemFrameDecoder {
 }
 
 /// Push-based protocol-aware modem decoder.
-final class StreamingDartModemDecoder implements ModemFrameDecoder {
-  StreamingDartModemDecoder(this._decoder);
+final class StreamingFlutterModemDecoder implements ModemFrameDecoder {
+  StreamingFlutterModemDecoder(this._decoder);
 
   final ModemFrameDecoder _decoder;
   final StreamController<ModemFrame> _controller =

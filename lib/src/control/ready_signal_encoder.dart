@@ -13,14 +13,14 @@ final class ReadySignalEncoderConfig {
   final Duration trailingSilence;
 }
 
-/// Adds acoustic padding and encodes READY through a [DartModem].
+/// Adds acoustic padding and encodes READY through a [FlutterModem].
 final class ReadySignalEncoder {
   const ReadySignalEncoder({
     required this.modem,
     this.config = const ReadySignalEncoderConfig(),
   });
 
-  final DartModem modem;
+  final FlutterModem modem;
   final ReadySignalEncoderConfig config;
 
   Int16List encode(ReadySignal ready) {
@@ -85,7 +85,7 @@ final class RepeatingReadySignalEncoder {
     _validate();
   }
 
-  final DartModem modem;
+  final FlutterModem modem;
   final ReadySignal ready;
   final ReadyRepeatConfig config;
   final ReadySignalEncoderConfig encoderConfig;

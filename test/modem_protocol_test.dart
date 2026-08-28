@@ -1,11 +1,11 @@
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 import 'package:test/test.dart';
 
 void main() {
   test('Voice TX is the default protocol', () {
-    final DartModem modem = DartModem();
+    final FlutterModem modem = FlutterModem();
     final Uint8List payload = Uint8List.fromList(<int>[1, 2, 3, 4]);
 
     final List<ModemFrame> frames =
@@ -17,7 +17,7 @@ void main() {
   });
 
   test('null protocol sends bytes without application framing', () {
-    final DartModem modem = DartModem(protocol: null);
+    final FlutterModem modem = FlutterModem(protocol: null);
     final Uint8List payload = Uint8List.fromList(<int>[5, 6, 7]);
 
     final List<ModemFrame> frames =
@@ -27,7 +27,7 @@ void main() {
   });
 
   test('a custom protocol can replace Voice TX', () {
-    final DartModem modem = DartModem(protocol: const _PrefixProtocol());
+    final FlutterModem modem = FlutterModem(protocol: const _PrefixProtocol());
     final Uint8List payload = Uint8List.fromList(<int>[8, 9]);
 
     final List<ModemFrame> frames =

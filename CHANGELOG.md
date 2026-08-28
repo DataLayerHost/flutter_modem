@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.2.0
+
+- Rename the package and public library from `dart_modem` to `flutter_modem`.
+- Move repository and issue links to DataLayerHost/flutter_modem.
+- Align continuous integration and publishing checks with the related Flutter packages.
+
 ## 0.1.0
 
 - Initial release with a pure Dart continuous-phase BFSK encoder.
