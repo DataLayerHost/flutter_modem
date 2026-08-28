@@ -1,11 +1,11 @@
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 import 'package:test/test.dart';
 
 void main() {
   group('READY PCM encoder', () {
-    final DartModem modem = DartModem();
+    final FlutterModem modem = FlutterModem();
     const ReadySignal ready = ReadySignal(sessionId: 0x12345678);
 
     test('modem loopback recovers the exact READY frame', () {
@@ -41,7 +41,7 @@ void main() {
   });
 
   group('repeating READY encoder', () {
-    final DartModem modem = DartModem();
+    final FlutterModem modem = FlutterModem();
     const ReadySignal ready = ReadySignal(sessionId: 55, sequenceNumber: 8);
     const ReadySignalEncoderConfig noPadding = ReadySignalEncoderConfig(
       leadingSilence: Duration.zero,

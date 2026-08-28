@@ -1,8 +1,8 @@
-name: dart_modem
+name: flutter_modem
 description: A pure Dart acoustic modem for encoding binary data as BFSK PCM audio.
-version: 0.1.0
-repository: https://github.com/bchainhub/dart_modem
-issue_tracker: https://github.com/bchainhub/dart_modem/issues
+version: 0.2.0
+repository: https://github.com/DataLayerHost/flutter_modem
+issue_tracker: https://github.com/DataLayerHost/flutter_modem/issues
 topics:
   - audio
   - modem

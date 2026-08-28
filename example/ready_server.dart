@@ -1,9 +1,9 @@
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 
 void main() {
-  final DartModem modem = DartModem();
+  final FlutterModem modem = FlutterModem();
   final RepeatingReadySignalEncoder repeater = RepeatingReadySignalEncoder(
     modem: modem,
     ready: const ReadySignal(

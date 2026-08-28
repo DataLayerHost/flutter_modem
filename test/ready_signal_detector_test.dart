@@ -1,11 +1,11 @@
 import 'dart:math' as math;
 import 'dart:typed_data';
 
-import 'package:dart_modem/dart_modem.dart';
+import 'package:flutter_modem/flutter_modem.dart';
 import 'package:test/test.dart';
 
 void main() {
-  final DartModem modem = DartModem();
+  final FlutterModem modem = FlutterModem();
   Int16List encode(ReadySignal signal) =>
       ReadySignalEncoder(modem: modem).encode(signal);
 

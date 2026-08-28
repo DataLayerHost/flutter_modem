@@ -23,7 +23,7 @@ abstract interface class ModemProtocolDecoder {
   void reset();
 }
 
-/// Version 1 Voice Transaction Protocol, used by [DartModem] by default.
+/// Version 1 Voice Transaction Protocol, used by [FlutterModem] by default.
 ///
 /// The input to [encode] is an already-signed, publicly broadcastable
 /// transaction. It is enveloped, hashed, checksummed, and split into bounded
@@ -102,7 +102,7 @@ final class _VoiceTxModemProtocolDecoder implements ModemProtocolDecoder {
 
 /// Identity application protocol.
 ///
-/// This is equivalent to passing `protocol: null` to [DartModem], and is
+/// This is equivalent to passing `protocol: null` to [FlutterModem], and is
 /// useful where a concrete [ModemProtocol] value is required.
 final class NoModemProtocol implements ModemProtocol {
   const NoModemProtocol();

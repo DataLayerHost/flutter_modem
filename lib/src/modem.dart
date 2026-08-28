@@ -7,8 +7,8 @@ import 'encoder/bfsk_encoder.dart';
 import 'protocol/modem_protocol.dart';
 
 /// Convenient facade for encoding and creating matching decoders.
-final class DartModem {
-  DartModem({
+final class FlutterModem {
+  FlutterModem({
     this.modulation = const Bfsk(),
     this.protocol = const VoiceTxModemProtocol(),
   });
@@ -57,6 +57,6 @@ final class DartModem {
           );
   }
 
-  StreamingDartModemDecoder createStreamingDecoder() =>
-      StreamingDartModemDecoder(createDecoder());
+  StreamingFlutterModemDecoder createStreamingDecoder() =>
+      StreamingFlutterModemDecoder(createDecoder());
 }
